@@ -14,6 +14,7 @@ import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceCompte;
 import projet.jsf.data.Compte;
 import projet.jsf.data.mapper.IMapper;
+import projet.jsf.util.CompteActif;
 import projet.jsf.util.UtilJsf;
 
 
@@ -44,6 +45,14 @@ public class ModelCompte implements Serializable {
 			for ( DtoCompte dto : serviceCompte.listerTout() ) {
 				liste.add( mapper.map( dto ) );
 			}
+		}
+		return liste;
+	}
+	
+	public List<Compte> getCompteConnecte(CompteActif compteActif) {
+		if ( liste == null ) {
+			liste = new ArrayList<>();
+			liste.add( mapper.map( serviceCompte.retrouverParPseudo(compteActif.getPseudo())) );
 		}
 		return liste;
 	}

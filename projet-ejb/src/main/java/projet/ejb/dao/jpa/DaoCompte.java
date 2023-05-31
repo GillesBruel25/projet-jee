@@ -14,6 +14,7 @@ import javax.persistence.PersistenceContext;
 
 import projet.ejb.dao.IDaoCompte;
 import projet.ejb.data.Compte;
+import projet.ejb.data.Personne;
 
 
 @Stateless
@@ -60,6 +61,31 @@ public class DaoCompte implements IDaoCompte {
 		var jpql = "SELECT c FROM Compte c ORDER BY c.pseudo";
 		var query = em.createQuery( jpql, Compte.class );
 		return query.getResultList();
+	}
+	
+	@Override
+	@TransactionAttribute( NOT_SUPPORTED )
+	public Compte retrouverParPseudo(String pseudo) {
+		em.clear();
+		var jpql = "SELECT c FROM Compte c WHERE c.pseudo=:pseudo";
+		var query = em.createQuery( jpql, Compte.class );
+		query.setParameter("pseudo", pseudo);
+		try {
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			// TODO Auto-generated catch block
+			return null;
+		}
+	}
+	
+	@Override
+	public void miseAJourCompteAvecPersonne(int idCompte, int personneId) {
+		 em.clear();
+		var jpql = "UPDATE Compte c SET c.personne.idPersonne=:personne WHERE c.id=:compte";
+		var query = em.createQuery( jpql);
+		query.setParameter("personne", personneId);
+		query.setParameter("compte", idCompte);
+		query.executeUpdate();
 	}
 
 

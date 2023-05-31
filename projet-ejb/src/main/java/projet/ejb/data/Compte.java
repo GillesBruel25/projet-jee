@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -42,17 +43,21 @@ public class Compte  {
 	@Column( name = "role")
 	private List<String> roles = new ArrayList<>();	
 	
+	@OneToOne
+	@JoinColumn(name="idPersonne")
+	private Personne personne;
 	
 	// Constructeurs
 	
 	public Compte() {
 	}
 
-	public Compte(int id, String pseudo, String motDePasse, String email) {
+	public Compte(int id, String pseudo, String motDePasse, String email, Personne personne) {
 		this.id = id;
 		this.pseudo = pseudo;
 		this.motDePasse = motDePasse;
 		this.email = email;
+		this.personne = personne;
 	}
 	
 		
@@ -97,10 +102,20 @@ public class Compte  {
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
+	
+	public Personne getPersonne() {
+		return personne;
+	}
 
+	public void setPersonne(Personne personne) {
+		this.personne = personne;
+	}
+
+	
     
 	// equals() et hashcode()
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

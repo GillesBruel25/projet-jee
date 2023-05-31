@@ -64,5 +64,17 @@ public class ModelConnexion {
 	        UtilJsf.messageError( "Pseudo ou mot de passe invalide." );
 	    	return null;
 	    }
+	}
+
+
+	public CompteActif getCompteActif() {
+		return compteActif;
+	}
+
+
+	public void setCompteActif(CompteActif compteActif) {
+		this.compteActif = compteActif;
 	}	
+	
+	
 }

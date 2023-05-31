@@ -11,10 +11,13 @@ import javax.ejb.TransactionAttribute;
 import javax.inject.Inject;
 
 import projet.commun.dto.DtoCompte;
+import projet.commun.dto.DtoPersonne;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceCompte;
 import projet.ejb.dao.IDaoCompte;
+import projet.ejb.dao.IDaoPersonne;
 import projet.ejb.data.Compte;
+import projet.ejb.data.Personne;
 import projet.ejb.data.mapper.IMapperEjb;
 
 @Stateless
@@ -26,6 +29,9 @@ public class ServiceCompte implements IServiceCompte {
 	private IMapperEjb mapper;
 	@Inject
 	private IDaoCompte daoCompte;
+	
+	@Inject
+	private IDaoPersonne daoPersonne;
 
 	// Actions
 
@@ -51,6 +57,12 @@ public class ServiceCompte implements IServiceCompte {
 	@TransactionAttribute(NOT_SUPPORTED)
 	public DtoCompte retrouver(int idCompte) {
 		return mapper.map(daoCompte.retrouver(idCompte));
+	}
+	
+	@Override
+	@TransactionAttribute(NOT_SUPPORTED)
+	public DtoCompte retrouverParPseudo(String pseudo) {
+		return mapper.map(daoCompte.retrouverParPseudo(pseudo));
 	}
 
 	@Override
@@ -94,6 +106,14 @@ public class ServiceCompte implements IServiceCompte {
 		if (message.length() > 0) {
 			throw new ExceptionValidation(message.toString().substring(1));
 		}
+	}
+
+	@Override
+	public void miseAJourCompteAvecPersonne(Integer idCompte, DtoPersonne idPersonne) {
+		// TODO Auto-generated method stub
+		
+		// daoCompte.miseAJourCompteAvecPersonne(idCompte, mapper.map(idPersonne));
+		// daoCompte.miseAJourCompteAvecPersonne(idCompte, daoPersonne.retrouver(idPersonne.getIdPersonne()));
 	}
 
 }

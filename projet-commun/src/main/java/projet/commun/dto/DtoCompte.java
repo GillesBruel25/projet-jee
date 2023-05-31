@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 @SuppressWarnings("serial")
 public class DtoCompte implements Serializable  {
 
@@ -20,6 +21,8 @@ public class DtoCompte implements Serializable  {
 	private String		email;
 	
 	private List<String> roles = new ArrayList<String>();
+	
+	private DtoPersonne personne;
 	
 	
 	// Constructeurs
@@ -78,6 +81,14 @@ public class DtoCompte implements Serializable  {
 	}
 
 	
+	public DtoPersonne getPersonne() {
+		return personne;
+	}
+
+	public void setPersonne(DtoPersonne personne) {
+		this.personne = personne;
+	}
+
 	public boolean isInRole( String role ) {
 		
 		if ( role != null ) {

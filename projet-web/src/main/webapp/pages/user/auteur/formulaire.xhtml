@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/template/page-standard.xhtml"
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ui="http://java.sun.com/jsf/facelets">>
+
+	 <f:metadata>
+		 <f:viewParam name="id" value="#{modelAuteur.courant.idAuteur}" />
+		 <f:viewAction action="#{modelAuteur.actualiserCourant()}" />
+	 </f:metadata>
+
+    <ui:define name="titre">Ajouter un Auteur</ui:define>
+
+    <ui:define name="contenu">
+
+	<h:form>
+	
+		<table class="form">
+			<tr>
+				<td>
+					<h:outputLabel for="id">Id :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="id" size="5" readonly="true"
+						value="#{modelAuteur.courant.idAuteur}" />
+					<br /><h:message for="id" errorClass="error"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h:outputLabel for="nom">Nom :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="nom" size="25" 
+						value="#{modelAuteur.courant.nom}" />
+					<br /><h:message for="nom" errorClass="error"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<h:outputLabel for="prenom">Prénom :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="prenom" size="25" 
+						value="#{modelAuteur.courant.prenom}" />
+					<br /><h:message for="prenom" errorClass="error"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td><h:outputLabel for="sexe">Sexe : </h:outputLabel></td>
+				<td><h:selectOneRadio id="sexe"
+						value="#{modelAuteur.courant.sexe}">
+						<f:selectItem itemValue="M" itemLabel="Masculin" />
+						<f:selectItem itemValue="F" itemLabel="Féminin" />
+						<f:selectItem itemValue="N" itemLabel="Non défini" />
+					</h:selectOneRadio> <br />
+				<h:message for="sexe" errorClass="error"></h:message></td>
+			</tr>
+				
+			<tr>
+				<td>
+					<h:outputLabel for="dateNaissance">Date de Naissance :</h:outputLabel>				
+				</td>
+				<td>
+				<!-- <h:outputText value = "12-01-2012" >
+			         <f:convertDateTime pattern = "dd-mm-yyyy" />
+			      </h:outputText> -->
+					<h:inputText id="date_naissance" size="25" 
+						value="#{modelAuteur.courant.date_naissance}" />
+					<br /><h:message for="date_naissance" errorClass="error"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<h:outputLabel for="nationalite">Nationalité :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="nationalite" size="25" 
+						value="#{modelAuteur.courant.nationalite}" />
+					<br /><h:message for="nationalite" errorClass="error"/>
+				</td>
+			</tr>
+			
+		</table>
+
+		<br /> 
+		<h:commandButton value="Valider" 
+			action="#{modelAuteur.validerMiseAJour()}" />
+		<h:button value="Retour" outcome="listeAuteurs" />
+	</h:form>
+
+	</ui:define>
+
+</ui:composition>

@@ -16,6 +16,22 @@
    <from-outcome>info</from-outcome>
    <to-view-id>/pages/info.xhtml</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>listePersonnes</from-outcome>
+   <to-view-id>/pages/admin/personne/liste.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>listeCategories</from-outcome>
+   <to-view-id>/pages/admin/categorie/liste.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>listeAuteurs</from-outcome>
+   <to-view-id>/pages/user/auteur/liste.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>listeOuvrages</from-outcome>
+   <to-view-id>/pages/user/ouvrage/liste.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <application/>
 </faces-config>

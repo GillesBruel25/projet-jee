@@ -23,11 +23,17 @@
 <div id="body">
 
 <div id="header">
+	<div id="header-image">
+		<h:graphicImage name="images/logo_java.png" width="110" height="55"/>
+	</div>
+	
 	<h:outputText value="&nbsp;" rendered="#{not compteActif.loggedIn}" />
 	<h:form rendered="#{compteActif.loggedIn}">
-		<h:link outcome="comptes" value="Personnes" rendered="#{compteActif.utilisateur }" />
+		<h:link outcome="listePersonnes" value="Personnes" rendered="#{compteActif.utilisateur }" />
 		<h:panelGroup rendered="#{compteActif.admininstrateur}">
-			<h:link outcome="comptes" value="Catégories"  />
+			<h:link outcome="listeCategories" value="Catégories"  />
+			<h:link outcome="listeAuteurs" value="Auteurs"  />
+			<h:link outcome="listeOuvrages" value="Ouvrages"  />
 			<h:link outcome="comptes" value="Comptes"  />
 		</h:panelGroup>
 		<h:commandLink action="#{compteActif.disconnect()}" value="Déconnexion"  />

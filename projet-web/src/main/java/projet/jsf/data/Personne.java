@@ -1,12 +1,9 @@
 package projet.jsf.data;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
@@ -16,7 +13,7 @@ public class Personne implements Serializable {
 
 	// Champs
 	
-	private Integer			id;
+	private Integer			idPersonne;
 	
 	@NotBlank( message = "Le nom doit être renseigné")
 	@Size(max=25, message = "Valeur trop longue pour le nom : 25 car. maxi" )
@@ -26,10 +23,12 @@ public class Personne implements Serializable {
 	@Size(max=25, message = "Valeur trop longue pour le prénom : 25 car. maxi" )
 	private String			prenom;
 
-	@NotNull( message = "La catégorie est obligatoire")
+	private Compte		compte;
+	
+	/*@NotNull( message = "La catégorie est obligatoire")
 	private Categorie		categorie;
 
-	private List<Telephone>	telephones = new ArrayList<>();
+	private List<Telephone>	telephones = new ArrayList<>();*/
 
 	
 	// Constructeurs
@@ -37,23 +36,24 @@ public class Personne implements Serializable {
 	public Personne() {
 	}
 
-	public Personne(Integer id, String nom, String prenom, Categorie categorie) {
+	public Personne(Integer id, String nom, String prenom, Compte compte) {
 		super();
-		this.id = id;
+		this.idPersonne = id;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.categorie = categorie;
+		this.compte = compte;
+		// this.categorie = categorie;
 	}
 	
 	
 	// Getters & setters
 
-	public Integer getId() {
-		return id;
+	public Integer getIdPersonne() {
+		return idPersonne;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdPersonne(Integer id) {
+		this.idPersonne = id;
 	}
 
 	public String getNom() {
@@ -71,8 +71,16 @@ public class Personne implements Serializable {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
+	
+	public Compte getCompte() {
+		return compte;
+	}
 
-	public Categorie getCategorie() {
+	public void setCompte(Compte compte) {
+		this.compte = compte;
+	}
+
+	/* public Categorie getCategorie() {
 		return categorie;
 	}
 
@@ -86,14 +94,22 @@ public class Personne implements Serializable {
 
 	public void setTelephones(List<Telephone> telephones) {
 		this.telephones = telephones;
-	}
+	} */
 
 	
 	// hashCode() & equals()
 
+	
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(idPersonne);
+	}
+
+	@Override
+	public String toString() {
+		return "Personne [idPersonne=" + idPersonne + ", nom=" + nom + ", prenom=" + prenom + ", compte=" + compte
+				+ "]";
 	}
 
 	@Override
@@ -105,7 +121,7 @@ public class Personne implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		var other = (Personne) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(idPersonne, other.idPersonne);
 	}
 	
 

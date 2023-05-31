@@ -32,7 +32,7 @@ public class Compte implements Serializable  {
 	
 	private List<String> roles = new ArrayList<>();	
 
-	
+	private Personne personne;
 	// Constructeurs
 	
 	public Compte() {
@@ -95,7 +95,21 @@ public class Compte implements Serializable  {
 	}
 
 	
+	public String toString() {
+		return pseudo;
+	}
+	
+	public Personne getPersonne() {
+		return personne;
+	}
+
+	public void setPersonne(Personne personne) {
+		this.personne = personne;
+	}
+	
 	// hashCode() & equals()
+
+	
 
 	@Override
 	public int hashCode() {

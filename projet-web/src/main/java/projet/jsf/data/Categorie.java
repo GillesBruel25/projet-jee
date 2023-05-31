@@ -14,13 +14,12 @@ public class Categorie implements Serializable {
 	
 	// Champs
 
-    private Integer        	id;
+    private Integer        	idCategorie;
     
-	@NotBlank( message = "Le libellé doit être renseigné")
+	@NotBlank( message = "Le nom doit être renseigné")
 	@Size(max=25, message = "Valeur trop longue pour le libellé : 25 car. maxi" )
-    private String      	libelle;
+    private String      	nomCategorie;
 	
-	private LocalDate		debut;
     
     
     // Constructeurs
@@ -28,54 +27,46 @@ public class Categorie implements Serializable {
     public Categorie() {
 	}
 
-    public Categorie(Integer id, String libelle) {
+    public Categorie(Integer id, String nomCategorie) {
 		super();
-		this.id = id;
-		this.libelle = libelle;
+		this.idCategorie = id;
+		this.nomCategorie = nomCategorie;
 	}
     
     
     // Getters & setters
 
-	public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getLibelle() {
-        return libelle;
-    }
-
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
-    }
-    
-    public LocalDate getDebut() {
-		return debut;
-	}
-    
-    public void setDebut(LocalDate debut) {
-		this.debut = debut;
+	public Integer getIdCategorie() {
+		return idCategorie;
 	}
 
-    
-    // toString()
-    
-	@Override
-	public String toString() {
-		return libelle;
+	public void setIdCategorie(Integer idCategorie) {
+		this.idCategorie = idCategorie;
 	}
 
+	public String getNomCategorie() {
+		return nomCategorie;
+	}
+
+	public void setNomCategorie(String nomCategorie) {
+		this.nomCategorie = nomCategorie;
+	}
+	
+	
 	
 	// hashCode() & equals()
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(id);
+	public String toString() {
+		return  nomCategorie;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idCategorie);
+	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -86,7 +77,7 @@ public class Categorie implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		var other = (Categorie) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(idCategorie, other.idCategorie);
 	}
 
 }
