@@ -23,7 +23,7 @@
 				</td>
 				<td>
 					<h:inputText id="id" size="5" readonly="true"
-						value="#{modelCategorie.courant.idCategorie}" />
+						value="#{modelCategorie.courant.idCategorie}" class="input"/>
 					<br /><h:message for="id" errorClass="error"/>
 				</td>
 			</tr>
@@ -33,7 +33,7 @@
 				</td>
 				<td>
 					<h:inputText id="nom" size="25" 
-						value="#{modelCategorie.courant.nomCategorie}" />
+						value="#{modelCategorie.courant.nomCategorie}" class="input"/>
 					<br /><h:message for="nom" errorClass="error"/>
 				</td>
 			</tr>
@@ -41,8 +41,8 @@
 
 		<br /> 
 		<h:commandButton value="Valider" 
-			action="#{modelCategorie.validerMiseAJour()}" />
-		<h:button value="Retour" outcome="listeCategories" />
+			action="#{modelCategorie.validerMiseAJour()}" class="submit"/>
+		<h:button value="Retour" outcome="listeCategories" class="submit"/>
 	</h:form>
 
 	</ui:define>

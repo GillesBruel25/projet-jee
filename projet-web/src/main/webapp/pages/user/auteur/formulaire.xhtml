@@ -23,7 +23,7 @@
 				</td>
 				<td>
 					<h:inputText id="id" size="5" readonly="true"
-						value="#{modelAuteur.courant.idAuteur}" />
+						value="#{modelAuteur.courant.idAuteur}" class="input"/>
 					<br /><h:message for="id" errorClass="error"/>
 				</td>
 			</tr>
@@ -33,7 +33,7 @@
 				</td>
 				<td>
 					<h:inputText id="nom" size="25" 
-						value="#{modelAuteur.courant.nom}" />
+						value="#{modelAuteur.courant.nom}" class="input"/>
 					<br /><h:message for="nom" errorClass="error"/>
 				</td>
 			</tr>
@@ -44,7 +44,7 @@
 				</td>
 				<td>
 					<h:inputText id="prenom" size="25" 
-						value="#{modelAuteur.courant.prenom}" />
+						value="#{modelAuteur.courant.prenom}" class="input"/>
 					<br /><h:message for="prenom" errorClass="error"/>
 				</td>
 			</tr>
@@ -69,7 +69,7 @@
 			         <f:convertDateTime pattern = "dd-mm-yyyy" />
 			      </h:outputText> -->
 					<h:inputText id="date_naissance" size="25" 
-						value="#{modelAuteur.courant.date_naissance}" />
+						value="#{modelAuteur.courant.date_naissance}" class="input"/>
 					<br /><h:message for="date_naissance" errorClass="error"/>
 				</td>
 			</tr>
@@ -80,7 +80,7 @@
 				</td>
 				<td>
 					<h:inputText id="nationalite" size="25" 
-						value="#{modelAuteur.courant.nationalite}" />
+						value="#{modelAuteur.courant.nationalite}" class="input"/>
 					<br /><h:message for="nationalite" errorClass="error"/>
 				</td>
 			</tr>
@@ -89,8 +89,8 @@
 
 		<br /> 
 		<h:commandButton value="Valider" 
-			action="#{modelAuteur.validerMiseAJour()}" />
-		<h:button value="Retour" outcome="listeAuteurs" />
+			action="#{modelAuteur.validerMiseAJour()}" class="submit"/>
+		<h:button value="Retour" outcome="listeAuteurs" class="submit"/>
 	</h:form>
 
 	</ui:define>

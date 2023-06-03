@@ -23,7 +23,7 @@
 				</td>
 				<td>
 					<h:inputText id="id" size="5" readonly="true"
-						value="#{modelOuvrage.courant.idOuvrage}" />
+						value="#{modelOuvrage.courant.idOuvrage}" class="input"/>
 					<br /><h:message for="id" errorClass="error"/>
 				</td>
 			</tr>
@@ -33,7 +33,7 @@
 				</td>
 				<td>
 					<h:inputText id="titre" size="25" 
-						value="#{modelOuvrage.courant.titre}" />
+						value="#{modelOuvrage.courant.titre}" class="input"/>
 					<br /><h:message for="titre" errorClass="error"/>
 				</td>
 			</tr>
@@ -44,7 +44,7 @@
 				</td>
 				<td>
 					<h:inputText id="dateParution" size="25" 
-						value="#{modelOuvrage.courant.dateParution}" />
+						value="#{modelOuvrage.courant.dateParution}" class="input"/>
 					<br /><h:message for="dateParution" errorClass="error"/>
 				</td>
 			</tr>
@@ -55,7 +55,7 @@
 				</td>
 				<td>
 					<h:inputText id="dateAchat" size="25" 
-						value="#{modelOuvrage.courant.dateAchat}" />
+						value="#{modelOuvrage.courant.dateAchat}" class="input"/>
 					<br /><h:message for="dateAchat" errorClass="error"/>
 				</td>
 			</tr>
@@ -78,7 +78,7 @@
 				</td>
 				<td>
 					<h:inputText id="langueLivre" size="25" 
-						value="#{modelOuvrage.courant.langueLivre}" />
+						value="#{modelOuvrage.courant.langueLivre}" class="input"/>
 					<br /><h:message for="langueLivre" errorClass="error"/>
 				</td>
 			</tr>
@@ -133,8 +133,8 @@
 
 		<br /> 
 		<h:commandButton value="Valider" 
-			action="#{modelOuvrage.validerMiseAJour()}" />
-		<h:button value="Retour" outcome="listeOuvrages" />
+			action="#{modelOuvrage.validerMiseAJour()}" class="submit"/>
+		<h:button value="Retour" outcome="listeOuvrages" class="submit"/>
 	</h:form>
 
 	</ui:define>

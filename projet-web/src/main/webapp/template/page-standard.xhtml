@@ -22,23 +22,48 @@
 <ui:debug hotkey="x" rendered="#{initParam['javax.faces.PROJECT_STAGE'] == 'Development'}"/>
 <div id="body">
 
-<div id="header">
-	<div id="header-image">
-		<h:graphicImage name="images/logo_java.png" width="110" height="55"/>
+	<h:outputText value="&nbsp;" rendered="#{not compteActif.loggedIn}" />
+	<h:form rendered="#{compteActif.loggedIn}">	
+	
+		<div id="recherche">
+		<h:form>
+	        <h:inputText value="#{bean.motCle}" class= "input-recherche" />
+	        <h:commandButton 
+					value="Rechercher" 
+					image="#{ resource['images:loupe.png'] }" 
+					styleClass="image-action"
+					action="#{bean.rechercher}"
+				>
+				</h:commandButton>
+	    </h:form>
+	    	
 	</div>
 	
-	<h:outputText value="&nbsp;" rendered="#{not compteActif.loggedIn}" />
-	<h:form rendered="#{compteActif.loggedIn}">
-		<h:link outcome="listePersonnes" value="Personnes" rendered="#{compteActif.utilisateur }" />
-		<h:panelGroup rendered="#{compteActif.admininstrateur}">
-			<h:link outcome="listeCategories" value="Catégories"  />
-			<h:link outcome="listeAuteurs" value="Auteurs"  />
-			<h:link outcome="listeOuvrages" value="Ouvrages"  />
-			<h:link outcome="comptes" value="Comptes"  />
-		</h:panelGroup>
-		<h:commandLink action="#{compteActif.disconnect()}" value="Déconnexion"  />
+	<div id="barre">
+		<h:graphicImage name="images/logo_java.png" width="110" height="50"/>
+				<div id="liste">
+			<ul>
+				<li><h:graphicImage name="images/page-daccueil.png"/>
+	    			<h:link outcome="info" value="Accueil"  /></li>
+				<li><h:graphicImage name="images/silhouette-dutilisateurs-multiples.png"/>
+					<h:link outcome="listePersonnes" value="Personnes" rendered="#{compteActif.utilisateur }" /></li>
+				<h:panelGroup rendered="#{compteActif.admininstrateur}">
+				<li><h:graphicImage name="images/categorie.png"/>
+					<h:link outcome="listeCategories" value="Catégories"  /></li>
+				<li><h:graphicImage name="images/poesie.png"/>
+					<h:link outcome="listeAuteurs" value="Auteurs"  /></li>
+				<li><h:graphicImage name="images/livre-ouvert.png"/>
+					<h:link outcome="listeOuvrages" value="Ouvrages"  /></li>
+				<li><h:graphicImage name="images/ombre-de-lutilisateur-masculin.png" />
+					<h:link outcome="comptes" value="Comptes"  /></li>
+				</h:panelGroup>
+					<li><h:graphicImage name="images/se-deconnecter.png" />
+					<h:commandLink action="#{compteActif.disconnect()}" value="Déconnexion"  /></li>
+			</ul>
+				</div>
+	</div>
 	</h:form>
-</div>
+
 
 <h1><ui:insert name="titre">Titre absent</ui:insert></h1>
 
