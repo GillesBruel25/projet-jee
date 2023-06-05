@@ -9,10 +9,10 @@
 	<f:viewAction action="#{utilJsf.messageFromRequestAttribute()}" />
 </f:metadata>
 
-     <ui:define name="titre">BIBLIO SHARE</ui:define>
+     <ui:define name="titre">SIGN IN</ui:define>
 
     <ui:define name="contenu" class="connecte">
-
+<div class="connecte">
 	<h:form>
 	
 		<table class="form">
@@ -72,11 +72,11 @@
 		</table>
 
 		<br /> 
-		<h:commandButton value="Valider" action="#{modelInscription.validerMiseAJour()}" class="submit" />
+		<h:commandButton value="Valider" action="#{modelInscription.validerMiseAJour()}" class="submit-con" />
 			
-		<h:button value="Retour" outcome="connexion" class="submit" />
+		<h:button value="Retour" outcome="connexion" class="submit-con" />
 	</h:form>
-
+</div>
 	</ui:define>
 
 </ui:composition>

@@ -22,11 +22,10 @@
 	<ui:insert name="head" />
 </h:head>
 
-		<div id="connecte">
      	<ui:define name="titre">LOGIN</ui:define>
 
     <ui:define name="contenu">
-
+<div class="connecte">
 	<h:form>
 	<h:graphicImage name="images/user.png"/>
 		<h4>Vous n'avez pas de compte ? <h:link outcome="inscription" value="inscrivez-vous"  /></h4>
@@ -45,11 +44,11 @@
 		</table>
 	
 			<br />
-			<h:commandButton action="#{modelConnexion.connect()}" value="Se connecter" class="submit">
+			<h:commandButton action="#{modelConnexion.connect()}" value="Se connecter" class="submit-con">
 			</h:commandButton>
-			<input type="reset" value="Effacer" class="submit"/>
+			
 	</h:form>
-
-	</ui:define>
 </div>
+	</ui:define>
+
 </ui:composition>
