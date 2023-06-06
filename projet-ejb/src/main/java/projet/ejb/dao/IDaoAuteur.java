@@ -6,9 +6,9 @@ import projet.ejb.data.Auteur;
 
 public interface IDaoAuteur {
 	
-	int			inserer( Auteur Auteur );
+	int			inserer( Auteur auteur );
 
-	void 		modifier( Auteur Auteur );
+	void 		modifier( Auteur auteur );
 
 	void 		supprimer( int idAuteur );
 

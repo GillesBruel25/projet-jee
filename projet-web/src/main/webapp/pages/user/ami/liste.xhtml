@@ -5,84 +5,109 @@
      xmlns:ui="http://java.sun.com/jsf/facelets"
      template="/template/page-standard.xhtml" >
 
-     <ui:define name="titre">Liste des Ouvrages</ui:define>
+     <ui:define name="titre">Liste des Amis</ui:define>
 
     <ui:define name="contenu">
 
+
+	<h:button value="Faire une demande d'ami" outcome="demandeami" />
+
+    <h3>Liste des demandes</h3>
 	<h:form>
 
 		<h:dataTable styleClass="liste" 
-			value="#{modelOuvrage.liste}" var="item" 
+			value="#{modelDemandeAmitie.liste}" var="item" 
 			rowClasses="impair, pair" columnClasses="left,left,center"
 		>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Titre" />
+					<h:outputText value="Destinataire" />
 				</f:facet>
-				#{item.titre}
+				#{item.destinataire}
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Date de la demande" />
+				</f:facet>
+				#{item.dateDemande}
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Date d'Achat" />
+					<h:outputText value="Status" />
 				</f:facet>
-				#{item.dateAchat}
+				#{item.status}
 			</h:column>
 			
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Image" />
-				</f:facet>
-				<h:graphicImage name="images/#{item.imageLivre}" width="110" height="55"/>
-				
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Date de Parution" />
-				</f:facet>
-				#{item.dateParution}
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Langue" />
-				</f:facet>
-				#{item.langueLivre}
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Categorie" />
-				</f:facet>
-				#{item.categorie}
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Auteur" />
-				</f:facet>
-				#{item.auteur}
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Personne" />
-				</f:facet>
-				#{item.personne}
-			</h:column>
 			
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Actions" />
 				</f:facet>
 				<h:button
-					outcome="formulaire?id=#{item.idOuvrage}"
+					outcome="formulaire?id=#{item.idDemande}"
 					image="#{ resource['images:modifier.png'] }"
 					title="Modifier" 
 					styleClass="image-action"
 				/>
-				<h:commandButton action="#{modelOuvrage.supprimer(item)}" 
+				<h:commandButton action="#{modelDemandeAmitie.supprimer(item)}" 
+					value="Supprimer" 
+					onclick="return confirm('Confirmez-vous la suppression ?')" 
+					image="#{ resource['images:supprimer.png'] }" 
+					title="Supprimer"
+					styleClass="image-action"
+				>
+					<f:ajax render="@form" execute="@form" />				
+				</h:commandButton>
+			</h:column>
+			
+		</h:dataTable>
+		
+		<br />
+		<h:button value="Ajouter" outcome="formulaire" />
+
+	</h:form>
+	
+	<h3>Liste des amis</h3>
+	<h:form>
+
+		<h:dataTable styleClass="liste" 
+			value="#{modelAmi.liste}" var="item" 
+			rowClasses="impair, pair" columnClasses="left,left,center"
+		>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nom" />
+				</f:facet>
+				#{item.nom}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Prénom" />
+				</f:facet>
+				#{item.prenom}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Compte" />
+				</f:facet>
+				#{item.compte}
+			</h:column>
+			
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Actions" />
+				</f:facet>
+				<h:button
+					outcome="formulaire?id=#{item.idAmi}"
+					image="#{ resource['images:modifier.png'] }"
+					title="Modifier" 
+					styleClass="image-action"
+				/>
+				<h:commandButton action="#{modelAmi.supprimer(item)}" 
 					value="Supprimer" 
 					onclick="return confirm('Confirmez-vous la suppression ?')" 
 					image="#{ resource['images:supprimer.png'] }" 

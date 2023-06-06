@@ -9,10 +9,12 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import projet.commun.dto.DtoCompte;
+import projet.commun.dto.DtoDemandeAmitie;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceCompte;
-import projet.jsf.data.Compte;
+import projet.commun.service.IServiceDemandeAmitie;
+import projet.jsf.data.DemandeAmitie;
+import projet.jsf.data.Personne;
 import projet.jsf.data.mapper.IMapper;
 import projet.jsf.util.CompteActif;
 import projet.jsf.util.UtilJsf;
@@ -21,14 +23,17 @@ import projet.jsf.util.UtilJsf;
 @SuppressWarnings("serial")
 @Named
 @ViewScoped
-public class ModelCompte implements Serializable {
+public class ModelDemandeAmitie implements Serializable {
 
 	
 	// Champs
 	
-	private List<Compte>	liste;
+	private List<DemandeAmitie>	liste;
 	
-	private Compte			courant;
+	private DemandeAmitie			courant;
+	
+	@EJB
+	private IServiceDemandeAmitie	serviceDemandeAmitie;
 	
 	@EJB
 	private IServiceCompte	serviceCompte;
@@ -39,32 +44,19 @@ public class ModelCompte implements Serializable {
 	
 	// Getters 
 	
-	public List<Compte> getListe() {
+	public List<DemandeAmitie> getListe() {
 		if ( liste == null ) {
 			liste = new ArrayList<>();
-			for ( DtoCompte dto : serviceCompte.listerTout() ) {
+			for ( DtoDemandeAmitie dto : serviceDemandeAmitie.listerTout() ) {
 				liste.add( mapper.map( dto ) );
 			}
 		}
 		return liste;
 	}
 	
-	
-	public List<Compte> getCompteConnecte(CompteActif compteActif) {
-		if(compteActif.isAdmininstrateur()) {
-			return getListe();
-		}else {
-			if ( liste == null ) {
-				liste = new ArrayList<>();
-				liste.add( mapper.map( serviceCompte.retrouverParPseudo(compteActif.getPseudo())) );
-			}
-		}
-		return liste;
-	}
-	
-		public Compte getCourant() {
+		public DemandeAmitie getCourant() {
 			if ( courant == null ) {
-				courant = new Compte();
+				courant = new DemandeAmitie();
 			}
 			return courant;
 		}
@@ -74,9 +66,9 @@ public class ModelCompte implements Serializable {
 	
 	public String actualiserCourant() {
 		if ( courant != null ) {
-			DtoCompte dto = serviceCompte.retrouver( courant.getId() ); 
+			DtoDemandeAmitie dto = serviceDemandeAmitie.retrouver( courant.getIdDemande() ); 
 			if ( dto == null ) {
-				UtilJsf.messageError( "Le compte demandé n'existe pas" );
+				UtilJsf.messageError( "Le DemandeAmitie demandé n'existe pas" );
 				return "test/liste";
 			} else {
 				courant = mapper.map( dto );
@@ -90,10 +82,10 @@ public class ModelCompte implements Serializable {
 	
 	public String validerMiseAJour() {
 		try {
-			if ( courant.getId() == null) {
-				serviceCompte.inserer( mapper.map(courant) );
+			if ( courant.getIdDemande() == null) {
+				serviceDemandeAmitie.inserer( mapper.map(courant) );
 			} else {
-				serviceCompte.modifier( mapper.map(courant) );
+				serviceDemandeAmitie.modifier( mapper.map(courant) );
 			}
 			UtilJsf.messageInfo( "Mise à jour effectuée avec succès." );
 			return "liste";
@@ -103,15 +95,27 @@ public class ModelCompte implements Serializable {
 		}
 	}
 	
-	public String supprimer( Compte item ) {
+	public String supprimer( DemandeAmitie item ) {
 		try {
-			serviceCompte.supprimer( item.getId() );
+			serviceDemandeAmitie.supprimer( item.getIdDemande() );
 			liste.remove(item);
 			UtilJsf.messageInfo( "Suppression effectuée avec succès." );
 		} catch (ExceptionValidation e) {
 			UtilJsf.messageError( e ); 
 		}
 		return null;
+	}
+	
+	public String ajouter(CompteActif compteActif, Personne personne) {
+		try {
+			System.out.println(courant);
+			serviceDemandeAmitie.insererDemandeAvecPersonnes(serviceCompte.retrouverParPseudo(compteActif.getPseudo()).getId(), mapper.map(personne) );
+			UtilJsf.messageInfo( "Demande  envoyée avec succès." );
+			return "liste";
+		} catch (ExceptionValidation e) {
+			UtilJsf.messageError(e);
+			return null;
+		}
 	}
 	
 }

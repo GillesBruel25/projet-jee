@@ -31,15 +31,15 @@ public class DaoAuteur implements IDaoAuteur {
 	// Actions
 	
 	@Override
-	public int inserer(Auteur personne) {
-		em.persist(personne);
+	public int inserer(Auteur auteur) {
+		em.persist(auteur);
 		em.flush();
-		return personne.getIdAuteur();
+		return auteur.getIdAuteur();
 	}
 
 	@Override
-	public void modifier(Auteur personne) {
-		em.merge( personne );
+	public void modifier(Auteur auteur) {
+		em.merge( auteur );
 	}
 
 	@Override

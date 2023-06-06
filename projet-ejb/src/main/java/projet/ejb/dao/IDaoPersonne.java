@@ -15,7 +15,8 @@ public interface IDaoPersonne {
 	Personne 		retrouver( int idPersonne );
 
 	List<Personne> listerTout();
-
+	
 	Personne retrouverParCompte(int idCompte);
 
+	List<Personne> retrouverPersonnesRestantesParCompte(int idCompte);
 }

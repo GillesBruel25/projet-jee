@@ -79,4 +79,14 @@ public class DaoPersonne implements IDaoPersonne {
 		}
 	}
 	
+	@Override
+	@TransactionAttribute( NOT_SUPPORTED )
+	public List<Personne> retrouverPersonnesRestantesParCompte(int idCompte) {
+		em.clear();
+		var jpql = "SELECT p FROM Personne p WHERE p.compte.id <> :compte";
+		var query = em.createQuery( jpql, Personne.class );
+		query.setParameter("compte", idCompte);
+		return query.getResultList();
+	}
+	
 }

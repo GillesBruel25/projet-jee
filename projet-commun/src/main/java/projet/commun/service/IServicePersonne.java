@@ -18,7 +18,8 @@ public interface IServicePersonne {
 	
 	DtoPersonne 		retrouverParCompte( int idCompte ) ;
 
-
+	List<DtoPersonne> 		retrouverPersonnesRestantesParCompte( int idCompte ) ;
+	
 	List<DtoPersonne>	listerTout() ;
 
 }

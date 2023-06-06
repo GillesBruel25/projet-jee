@@ -78,7 +78,7 @@ public class DaoCompte implements IDaoCompte {
 		}
 	}
 	
-	@Override
+	/* @Override
 	public void miseAJourCompteAvecPersonne(int idCompte, int personneId) {
 		 em.clear();
 		var jpql = "UPDATE Compte c SET c.personne.idPersonne=:personne WHERE c.id=:compte";
@@ -86,7 +86,7 @@ public class DaoCompte implements IDaoCompte {
 		query.setParameter("personne", personneId);
 		query.setParameter("compte", idCompte);
 		query.executeUpdate();
-	}
+	} */
 
 
 	@Override

@@ -6,6 +6,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -43,9 +44,12 @@ public class Compte  {
 	@Column( name = "role")
 	private List<String> roles = new ArrayList<>();	
 	
-	@OneToOne
+	@OneToOne(mappedBy = "compte", cascade = CascadeType.ALL)
+    private Personne personne;
+	
+	/*@OneToOne
 	@JoinColumn(name="idPersonne")
-	private Personne personne;
+	private Personne personne; */
 	
 	// Constructeurs
 	

@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     template="/template/page-standard.xhtml" >
+
+     <ui:define name="titre">Faire une demande d'ami</ui:define>
+
+    <ui:define name="contenu">
+
+
+	<!-- <h:button value="Faire une demande d'ami" outcome="demandeami" /> -->
+
+    <h3>Vous connaissez peut-être .... </h3>
+	<h:form>
+
+		<h:dataTable styleClass="liste" 
+			value="#{modelPersonne.getListePersonnesRestantes(modelConnexion.compteActif)}" var="item" 
+			rowClasses="impair, pair" columnClasses="left,left,center"
+		>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nom" />
+				</f:facet>
+				#{item.nom}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Prénom" />
+				</f:facet>
+				#{item.prenom}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Compte" />
+				</f:facet>
+				#{item.compte}
+			</h:column>
+			
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Actions" />
+				</f:facet>
+				<h:commandButton action="#{modelDemandeAmitie.ajouter(modelConnexion.compteActif, item)}" 
+					value="Envoyer la demande" 
+					image="#{ resource['images:demande.png'] }" 
+					title="Envoyer la demande"
+					styleClass="image-action"
+				>
+					<f:ajax render="@form" execute="@form" />				
+				</h:commandButton>
+			</h:column>
+			
+		</h:dataTable>
+		
+
+	</h:form>
+	
+
+	</ui:define>
+
+</ui:composition>

@@ -44,6 +44,8 @@ public class ServiceCategorie implements IServiceCategorie {
 
 	@Override
 	public void supprimer(int idCategorie) throws ExceptionValidation {
+		// faire un compter par categorie dans ouvrage ici  
+		// et si diff de 0 throw exception
 		daoCategorie.supprimer(idCategorie);
 	}
 

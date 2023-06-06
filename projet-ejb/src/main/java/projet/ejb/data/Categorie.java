@@ -1,7 +1,10 @@
 package projet.ejb.data;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,6 +14,7 @@ public class Categorie {
 
 	@Id
 	@Column(name = "IdCategorie")
+	@GeneratedValue( strategy = IDENTITY)
 	private int idCategorie;
 	
 	@Column(name = "nom_categorie")

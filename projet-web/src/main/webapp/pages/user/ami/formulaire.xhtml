@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/template/page-standard.xhtml"
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ui="http://java.sun.com/jsf/facelets">>
+
+	 <f:metadata>
+		 <f:viewParam name="id" value="#{modelPersonne.courant.idPersonne}" />
+		 <f:viewAction action="#{modelPersonne.actualiserCourant()}" />
+	 </f:metadata>
+
+    <ui:define name="titre">Ajouter une Personne</ui:define>
+
+    <ui:define name="contenu">
+
+	<h:form>
+	
+		<table class="form">
+			<tr>
+				<td>
+					<h:outputLabel for="id">Id :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="id" size="5" readonly="true"
+						value="#{modelPersonne.courant.idPersonne}" />
+					<br /><h:message for="id" errorClass="error"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h:outputLabel for="nom">Nom :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="nom" size="25" 
+						value="#{modelPersonne.courant.nom}" />
+					<br /><h:message for="nom" errorClass="error"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<h:outputLabel for="prenom">Prénom :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="prenom" size="25" 
+						value="#{modelPersonne.courant.prenom}" />
+					<br /><h:message for="prenom" errorClass="error"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td><h:outputLabel for="compte">Compte :</h:outputLabel>
+					</td>
+					<td><h:selectOneMenu id="compte"
+							value="#{modelPersonne.courant.compte}"
+							converter="#{converterCompte}">
+							<f:selectItems value="#{modelCompte.getCompteConnecte(modelConnexion.compteActif)}" var="item"
+								itemLabel="#{item.pseudo}" />
+						</h:selectOneMenu> <br />
+					<h:message for="compte" errorClass="error" /></td>
+			</tr>
+			<!-- <tr>
+				<td>
+					<h:outputLabel for="compte">Compte :</h:outputLabel>				
+				</td>
+				<td>
+					<h:inputText id="compte" size="5" readonly="true"
+						value="#{modelConnexion.compteActif}" />
+					<br /><h:message for="compte" errorClass="error"/>
+				</td>
+			</tr> -->
+		</table>
+
+		<br /> 
+		<h:commandButton value="Valider" 
+			action="#{modelPersonne.validerMiseAJour()}" />
+		<h:button value="Retour" outcome="listePersonnes" />
+	</h:form>
+
+	</ui:define>
+
+</ui:composition>

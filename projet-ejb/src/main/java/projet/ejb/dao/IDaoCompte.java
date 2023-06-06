@@ -24,6 +24,6 @@ public interface IDaoCompte {
 
 	Compte retrouverParPseudo(String pseudo);
 
-	void miseAJourCompteAvecPersonne(int idCompte, int personneId);
+	// void miseAJourCompteAvecPersonne(int idCompte, int personneId);
 
 }

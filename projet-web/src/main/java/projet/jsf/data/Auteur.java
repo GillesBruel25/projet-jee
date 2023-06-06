@@ -129,7 +129,10 @@ public class Auteur implements Serializable {
 	
 	// hashCode() & equals()
 
-	
+	@Override
+	public String toString() {
+		return nom;
+	}
 	
 
 	@Override

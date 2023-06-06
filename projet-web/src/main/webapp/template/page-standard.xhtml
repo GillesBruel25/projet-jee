@@ -32,10 +32,11 @@
 		<h:link outcome="listePersonnes" value="Personnes" rendered="#{compteActif.utilisateur }" />
 		<h:panelGroup rendered="#{compteActif.admininstrateur}">
 			<h:link outcome="listeCategories" value="Catégories"  />
-			<h:link outcome="listeAuteurs" value="Auteurs"  />
-			<h:link outcome="listeOuvrages" value="Ouvrages"  />
 			<h:link outcome="comptes" value="Comptes"  />
 		</h:panelGroup>
+		<h:link outcome="listeAuteurs" value="Auteurs"  />
+		<h:link outcome="listeOuvrages" value="Ouvrages"  />
+		<h:link outcome="amis" value="Amis"  />
 		<h:commandLink action="#{compteActif.disconnect()}" value="Déconnexion"  />
 	</h:form>
 </div>

@@ -3,6 +3,7 @@
      xmlns="http://www.w3.org/1999/xhtml"
      xmlns:h="http://java.sun.com/jsf/html"
      xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
      xmlns:ui="http://java.sun.com/jsf/facelets">>
 
 	 <f:metadata>
@@ -64,13 +65,17 @@
 				<td>
 					<h:outputLabel for="dateNaissance">Date de Naissance :</h:outputLabel>				
 				</td>
-				<td>
-				<!-- <h:outputText value = "12-01-2012" >
+				<!--<td>
+			     <h:outputText value = "12-01-2012" >
 			         <f:convertDateTime pattern = "dd-mm-yyyy" />
-			      </h:outputText> -->
+			      </h:outputText>
 					<h:inputText id="date_naissance" size="25" 
 						value="#{modelAuteur.courant.date_naissance}" />
 					<br /><h:message for="date_naissance" errorClass="error"/>
+				</td> -->
+				<td>
+					<h:inputText id="dateNaissance" a:type="date" value="#{modelAuteur.courant.date_naissance}" />
+					<br /><h:message for="dateNaissance" errorClass="error"/>
 				</td>
 			</tr>
 			

@@ -108,12 +108,12 @@ public class ServiceCompte implements IServiceCompte {
 		}
 	}
 
-	@Override
+	/*@Override
 	public void miseAJourCompteAvecPersonne(Integer idCompte, DtoPersonne idPersonne) {
 		// TODO Auto-generated method stub
 		
 		// daoCompte.miseAJourCompteAvecPersonne(idCompte, mapper.map(idPersonne));
 		// daoCompte.miseAJourCompteAvecPersonne(idCompte, daoPersonne.retrouver(idPersonne.getIdPersonne()));
-	}
+	} */
 
 }
