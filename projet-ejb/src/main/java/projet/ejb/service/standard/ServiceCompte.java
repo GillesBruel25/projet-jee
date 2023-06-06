@@ -37,7 +37,9 @@ public class ServiceCompte implements IServiceCompte {
 
 	@Override
 	public int inserer(DtoCompte dtoCompte) throws ExceptionValidation {
+		System.out.println("paola");
 		verifierValiditeDonnees(dtoCompte);
+		System.out.println("hey");
 		int id = daoCompte.inserer(mapper.map(dtoCompte));
 		return id;
 	}
@@ -102,7 +104,7 @@ public class ServiceCompte implements IServiceCompte {
 		if (dtoCompte.getEmail() == null || dtoCompte.getEmail().isEmpty()) {
 			message.append("\nL'adresse e-mail est absente.");
 		}
-
+		
 		if (message.length() > 0) {
 			throw new ExceptionValidation(message.toString().substring(1));
 		}

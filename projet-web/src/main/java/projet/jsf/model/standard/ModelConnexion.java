@@ -56,8 +56,8 @@ public class ModelConnexion {
 	        compteActif.setPseudo( dto.getPseudo() );
 	        compteActif.setRoles( dto.getRoles() );
 	        
-	    	modelInfo.setTitre( "Bienvenue" );
-	    	modelInfo.setTexte( "Vous êtes connecté en tant que '" + courant.getPseudo() +"'.");
+	    	modelInfo.setTitre( "Bienvenue" + courant.getPseudo() +"dans votre BLIBLIO SHARE.");
+	    	//modelInfo.setTexte( "Vous êtes connecté en tant que '" + courant.getPseudo() +"'.");
 		    return "info";
 
 	    } else {

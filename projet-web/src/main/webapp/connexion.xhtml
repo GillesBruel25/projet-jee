@@ -8,29 +8,47 @@
 <f:metadata>
 	<f:viewAction action="#{utilJsf.messageFromRequestAttribute()}" />
 </f:metadata>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><ui:insert name="titre">Connexion</ui:insert></title>
 
-     <ui:define name="titre">Projet JEE</ui:define>
+	<h:outputStylesheet name="styles.css" library="css" />
+
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js" type="text/javascript"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/jquery-ui.js" type="text/javascript" ></script>	
+	<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/themes/smoothness/jquery-ui.css" />
+	<h:outputScript name="datepicker-fr.js" library="js" />
+
+	<ui:insert name="head" />
+</h:head>
+
+     	<ui:define name="titre">LOGIN</ui:define>
 
     <ui:define name="contenu">
-
+<div class="connecte">
 	<h:form>
-		<table class="form">
+	<h:graphicImage name="images/user.png"/>
+		<h4>Vous n'avez pas de compte ? <h:link outcome="inscription" value="inscrivez-vous"  /></h4>
+		
+		<table class="formcon">
 			<tr>
-				<td><label>Pseudo :</label></td>
-				<td><h:inputText size="15" value="#{modelConnexion.courant.pseudo}" /></td>
+				<td><h:graphicImage name="images/ombre-de-lutilisateur-masculin.png"/><label>Pseudo :</label></td>
+				<td><h:inputText size="15" value="#{modelConnexion.courant.pseudo}"  class="input"/>
+					</td>
 			</tr>
 			<tr>
-				<td><label>Mot de passe :</label></td>
-				<td><h:inputSecret size="15" value="#{modelConnexion.courant.motDePasse}" /></td>
+				<td><h:graphicImage name="images/mdp.png"/><label>Mot de passe :</label></td>
+				<td><h:inputSecret size="15" value="#{modelConnexion.courant.motDePasse}" class="input" />
+					</td>
 			</tr>
 		</table>
 	
 			<br />
-			<h:commandButton action="#{modelConnexion.connect()}" value="Se connecter">
+			<h:commandButton action="#{modelConnexion.connect()}" value="Se connecter" class="submit-con">
 			</h:commandButton>
-			<input type="reset" value="Effacer" />
+			
 	</h:form>
-	
+</div>
 	</ui:define>
 
 </ui:composition>
