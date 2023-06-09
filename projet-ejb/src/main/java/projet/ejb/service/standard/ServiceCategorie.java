@@ -58,6 +58,10 @@ public class ServiceCategorie implements IServiceCategorie {
 			throw UtilServices.exceptionValidationOrAnomaly(e);
 		}
 		
+
+		// faire un compter par categorie dans ouvrage ici  
+		// et si diff de 0 throw exception
+		daoCategorie.supprimer(idCategorie);
 	}
 
 	@Override

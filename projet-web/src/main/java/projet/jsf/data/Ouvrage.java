@@ -3,6 +3,7 @@ package projet.jsf.data;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.servlet.http.Part;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -37,6 +38,9 @@ public class Ouvrage implements Serializable {
 	@NotNull( message = "La personne est obligatoire")
 	private Personne		personne;
 
+	private String folder = "C:\\jsf-upload\\";
+	
+	private Part uploadedFile;
 	// private List<Telephone>	telephones = new ArrayList<>();*/
 
 	
@@ -151,12 +155,29 @@ public class Ouvrage implements Serializable {
 		this.telephones = telephones;
 	} */
 
+	public String getFolder() {
+		return folder;
+	}
+
+	public void setFolder(String folder) {
+		this.folder = folder;
+	}
+
+	public Part getUploadedFile() {
+		return uploadedFile;
+	}
 	
 	// hashCode() & equals()
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(idOuvrage);
+	}
+
+	
+
+	public void setUploadedFile(Part uploadedFile) {
+		this.uploadedFile = uploadedFile;
 	}
 
 	@Override

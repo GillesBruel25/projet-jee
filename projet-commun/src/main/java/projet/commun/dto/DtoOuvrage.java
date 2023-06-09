@@ -26,6 +26,8 @@ public class DtoOuvrage implements Serializable {
 		
 		private DtoCategorie categorie;
 		
+		
+		
 		public DtoOuvrage() {
 			super();
 		}

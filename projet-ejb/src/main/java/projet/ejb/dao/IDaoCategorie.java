@@ -6,9 +6,9 @@ import projet.ejb.data.Categorie;
 
 public interface IDaoCategorie {
 	
-	int			inserer( Categorie Categorie );
+	int			inserer( Categorie categorie );
 
-	void 		modifier( Categorie Categorie );
+	void 		modifier( Categorie categorie );
 
 	void 		supprimer( int idCategorie );
 

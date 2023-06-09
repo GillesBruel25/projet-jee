@@ -85,6 +85,19 @@ public class ModelPersonne implements Serializable {
 		}
 		return liste;
 	}
+	
+	public List<Personne> getListePersonnesRestantes(CompteActif compteActif) {
+		if ( liste == null ) {
+			liste = new ArrayList<>();
+			//System.out.println(serviceCompte.retrouverParPseudo(compteActif.getPseudo()).getId());
+			//liste.add( mapper.map( servicePersonne.retrouverPersonnesRestantesParCompte(serviceCompte.retrouverParPseudo(compteActif.getPseudo()).getId())) );
+			for ( DtoPersonne dto :  servicePersonne.retrouverPersonnesRestantesParCompte(serviceCompte.retrouverParPseudo(compteActif.getPseudo()).getId()) ) {
+				liste.add( mapper.map( dto ) );
+			}
+		}
+		return liste;
+	}
+	
 	// Actions
 	
 	public String validerMiseAJour() {
@@ -92,7 +105,7 @@ public class ModelPersonne implements Serializable {
 			if ( courant.getIdPersonne() == null) {
 				//courant.setCompte(serviceCompte.retrouverParPseudo(courant.getCompte().getPseudo()));
 				// System.out.println("giles "+ courant);
-				int id= servicePersonne.inserer( mapper.map(courant) );
+				servicePersonne.inserer( mapper.map(courant) );
 				// serviceCompte.miseAJourCompteAvecPersonne(courant.getCompte().getId(), servicePersonne.retrouver(id) );
 			} else {
 				servicePersonne.modifier( mapper.map(courant) );

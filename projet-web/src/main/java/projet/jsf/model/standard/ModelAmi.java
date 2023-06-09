@@ -9,29 +9,28 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import projet.commun.dto.DtoCompte;
+import projet.commun.dto.DtoAmi;
 import projet.commun.exception.ExceptionValidation;
-import projet.commun.service.IServiceCompte;
-import projet.jsf.data.Compte;
+import projet.commun.service.IServiceAmi;
+import projet.jsf.data.Ami;
 import projet.jsf.data.mapper.IMapper;
-import projet.jsf.util.CompteActif;
 import projet.jsf.util.UtilJsf;
 
 
 @SuppressWarnings("serial")
 @Named
 @ViewScoped
-public class ModelCompte implements Serializable {
+public class ModelAmi implements Serializable {
 
 	
 	// Champs
 	
-	private List<Compte>	liste;
+	private List<Ami>	liste;
 	
-	private Compte			courant;
+	private Ami			courant;
 	
 	@EJB
-	private IServiceCompte	serviceCompte;
+	private IServiceAmi	serviceAmi;
 	
 	@Inject
 	private IMapper			mapper;
@@ -39,32 +38,19 @@ public class ModelCompte implements Serializable {
 	
 	// Getters 
 	
-	public List<Compte> getListe() {
+	public List<Ami> getListe() {
 		if ( liste == null ) {
 			liste = new ArrayList<>();
-			for ( DtoCompte dto : serviceCompte.listerTout() ) {
+			for ( DtoAmi dto : serviceAmi.listerTout() ) {
 				liste.add( mapper.map( dto ) );
 			}
 		}
 		return liste;
 	}
 	
-	
-	public List<Compte> getCompteConnecte(CompteActif compteActif) {
-		if(compteActif.isAdmininstrateur()) {
-			return getListe();
-		}else {
-			if ( liste == null ) {
-				liste = new ArrayList<>();
-				liste.add( mapper.map( serviceCompte.retrouverParPseudo(compteActif.getPseudo())) );
-			}
-		}
-		return liste;
-	}
-	
-		public Compte getCourant() {
+		public Ami getCourant() {
 			if ( courant == null ) {
-				courant = new Compte();
+				courant = new Ami();
 			}
 			return courant;
 		}
@@ -74,9 +60,9 @@ public class ModelCompte implements Serializable {
 	
 	public String actualiserCourant() {
 		if ( courant != null ) {
-			DtoCompte dto = serviceCompte.retrouver( courant.getId() ); 
+			DtoAmi dto = serviceAmi.retrouver( courant.getIdAmi() ); 
 			if ( dto == null ) {
-				UtilJsf.messageError( "Le compte demandé n'existe pas" );
+				UtilJsf.messageError( "Le Ami demandé n'existe pas" );
 				return "test/liste";
 			} else {
 				courant = mapper.map( dto );
@@ -90,10 +76,10 @@ public class ModelCompte implements Serializable {
 	
 	public String validerMiseAJour() {
 		try {
-			if ( courant.getId() == null) {
-				serviceCompte.inserer( mapper.map(courant) );
+			if ( courant.getIdAmi() == null) {
+				serviceAmi.inserer( mapper.map(courant) );
 			} else {
-				serviceCompte.modifier( mapper.map(courant) );
+				serviceAmi.modifier( mapper.map(courant) );
 			}
 			UtilJsf.messageInfo( "Mise à jour effectuée avec succès." );
 			return "liste";
@@ -103,9 +89,9 @@ public class ModelCompte implements Serializable {
 		}
 	}
 	
-	public String supprimer( Compte item ) {
+	public String supprimer( Ami item ) {
 		try {
-			serviceCompte.supprimer( item.getId() );
+			serviceAmi.supprimer( item.getIdAmi() );
 			liste.remove(item);
 			UtilJsf.messageInfo( "Suppression effectuée avec succès." );
 		} catch (ExceptionValidation e) {

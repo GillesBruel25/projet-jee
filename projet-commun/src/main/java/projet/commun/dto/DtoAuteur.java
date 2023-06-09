@@ -1,7 +1,6 @@
 package projet.commun.dto;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 @SuppressWarnings("serial")
 public class DtoAuteur implements Serializable {

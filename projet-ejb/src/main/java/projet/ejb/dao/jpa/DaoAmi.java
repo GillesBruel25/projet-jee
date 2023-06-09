@@ -12,14 +12,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-import projet.ejb.dao.IDaoCategorie;
-import projet.ejb.data.Categorie;
+import projet.ejb.dao.IDaoAmi;
+import projet.ejb.data.Ami;
 
 
 @Stateless
 @Local
 @TransactionAttribute( MANDATORY )
-public class DaoCategorie implements IDaoCategorie {
+public class DaoAmi implements IDaoAmi {
 
 	
 	// Champs
@@ -31,34 +31,34 @@ public class DaoCategorie implements IDaoCategorie {
 	// Actions
 	
 	@Override
-	public int inserer(Categorie categorie) {
-		em.persist(categorie);
+	public int inserer(Ami ami) {
+		em.persist(ami);
 		em.flush();
-		return categorie.getIdCategorie();
+		return ami.getIdAmi();
 	}
 
 	@Override
-	public void modifier(Categorie categorie) {
-		em.merge( categorie );
+	public void modifier(Ami ami) {
+		em.merge( ami );
 	}
 
 	@Override
-	public void supprimer(int idCategorie) {
-		em.remove( retrouver(idCategorie) );
-	}
-
-	@Override
-	@TransactionAttribute( NOT_SUPPORTED )
-	public Categorie retrouver(int idCategorie) {
-		return em.find( Categorie.class, idCategorie );
+	public void supprimer(int idAmi) {
+		em.remove( retrouver(idAmi) );
 	}
 
 	@Override
 	@TransactionAttribute( NOT_SUPPORTED )
-	public List<Categorie> listerTout() {
+	public Ami retrouver(int idAmi) {
+		return em.find( Ami.class, idAmi );
+	}
+
+	@Override
+	@TransactionAttribute( NOT_SUPPORTED )
+	public List<Ami> listerTout() {
 		em.clear();
-		var jpql = "SELECT c FROM Categorie c ORDER BY c.nomCategorie";
-		var query = em.createQuery( jpql, Categorie.class );
+		var jpql = "SELECT a FROM Ami a ORDER BY a.nom";
+		var query = em.createQuery( jpql, Ami.class );
 		return query.getResultList();
 	}
 

@@ -3,6 +3,7 @@
      xmlns="http://www.w3.org/1999/xhtml"
      xmlns:h="http://java.sun.com/jsf/html"
      xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
      xmlns:ui="http://java.sun.com/jsf/facelets">>
 
 	 <f:metadata>
@@ -14,7 +15,7 @@
 
     <ui:define name="contenu">
 
-	<h:form>
+	<h:form enctype="multipart/form-data">
 	
 		<table class="form">
 			<tr>
@@ -43,8 +44,7 @@
 					<h:outputLabel for="dateParution">Date de parution :</h:outputLabel>				
 				</td>
 				<td>
-					<h:inputText id="dateParution" size="25" 
-						value="#{modelOuvrage.courant.dateParution}" class="input"/>
+					<h:inputText id="dateParution" a:type="date" value="#{modelOuvrage.courant.dateParution}" />
 					<br /><h:message for="dateParution" errorClass="error"/>
 				</td>
 			</tr>
@@ -54,8 +54,7 @@
 					<h:outputLabel for="dateAchat">Date d'Achat :</h:outputLabel>				
 				</td>
 				<td>
-					<h:inputText id="dateAchat" size="25" 
-						value="#{modelOuvrage.courant.dateAchat}" class="input"/>
+					<h:inputText id="dateAchat" a:type="date" value="#{modelOuvrage.courant.dateAchat}" />
 					<br /><h:message for="dateAchat" errorClass="error"/>
 				</td>
 			</tr>
@@ -74,12 +73,31 @@
 			
 			<tr>
 				<td>
-					<h:outputLabel for="langueLivre">Langue :</h:outputLabel>				
+					<h:outputLabel for="imageLivre">Image :</h:outputLabel>				
 				</td>
 				<td>
+					<h:inputFile id="imageLivre" value="#{modelOuvrage.courant.uploadedFile}"
+								required="true"
+								requiredMessage="Please upload a file"
+								alt="Upload file"
+					></h:inputFile>
+					<br /><h:message for="imageLivre" errorClass="error"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<h:outputLabel for="langueLivre">Langue :</h:outputLabel>				
+				</td>
+				<!-- <td>
 					<h:inputText id="langueLivre" size="25" 
 						value="#{modelOuvrage.courant.langueLivre}" class="input"/>
 					<br /><h:message for="langueLivre" errorClass="error"/>
+				</td> -->
+				<td>
+					<h:selectOneMenu value="#{modelOuvrage.courant.langueLivre}">
+					    <f:selectItems value="#{modelOuvrage.listeLangues}" var="option" itemValue="#{option}" itemLabel="#{option}" />
+					</h:selectOneMenu>
 				</td>
 			</tr>
 			

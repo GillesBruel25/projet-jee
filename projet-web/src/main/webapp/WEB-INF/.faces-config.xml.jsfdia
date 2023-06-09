@@ -29,6 +29,31 @@
     ID="listeOuvrages::#pages#user#ouvrage#liste.xhtml" NAME="output6"
     PATH="/pages/user/ouvrage/liste.xhtml"
     TARGET="rules:#pages#user#ouvrage#liste.xhtml" TITLE="listeOuvrages" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="amis::#pages#user#ami#liste.xhtml"
+    NAME="output7" PATH="/pages/user/ami/liste.xhtml"
+    TARGET="rules:#pages#user#ami#liste.xhtml" TITLE="amis" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="demandeami::#pages#user#ami#demandeami.xhtml" NAME="output8"
+    PATH="/pages/user/ami/demandeami.xhtml"
+    TARGET="rules:#pages#user#ami#demandeami.xhtml" TITLE="demandeami" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inscription::#inscription.xhtml"
+    NAME="output7" PATH="/inscription.xhtml"
+    TARGET="rules:#inscription.xhtml" TITLE="inscription" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inscription::#inscription.xhtml"
+    NAME="output7" PATH="/inscription.xhtml"
+    TARGET="rules:#inscription.xhtml" TITLE="inscription" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inscription::#inscription.xhtml"
+    NAME="output7" PATH="/inscription.xhtml"
+    TARGET="rules:#inscription.xhtml" TITLE="inscription" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inscription::#inscription.xhtml"
+    NAME="output7" PATH="/inscription.xhtml"
+    TARGET="rules:#inscription.xhtml" TITLE="inscription" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inscription::#inscription.xhtml"
+    NAME="output7" PATH="/inscription.xhtml"
+    TARGET="rules:#inscription.xhtml" TITLE="inscription" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="inscription::#inscription.xhtml"
+    NAME="output7" PATH="/inscription.xhtml"
+    TARGET="rules:#inscription.xhtml" TITLE="inscription" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="inscription::#inscription.xhtml"
     NAME="output7" PATH="/inscription.xhtml"
     TARGET="rules:#inscription.xhtml" TITLE="inscription" model-entity="JSFProcessItemOutput"/>
@@ -48,6 +73,14 @@
   model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:#pages#user#auteur#liste.xhtml"
   PATH="/pages/user/auteur/liste.xhtml" SHAPE="409,366,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#inscription.xhtml" PATH="/inscription.xhtml"
+  SHAPE="40,360,0,0" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#pages#admin#categorie#liste.xhtml"
+  PATH="/pages/admin/categorie/liste.xhtml" SHAPE="379,275,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#pages#admin#categorie#liste.xhtml"
+  PATH="/pages/admin/categorie/liste.xhtml" SHAPE="379,275,0,0"
   model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:#pages#admin#categorie#liste.xhtml"
   PATH="/pages/admin/categorie/liste.xhtml" SHAPE="379,275,0,0"

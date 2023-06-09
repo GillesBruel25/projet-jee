@@ -1,16 +1,8 @@
 package projet.ejb.data;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,16 +10,11 @@ import javax.persistence.Table;
 public class Categorie {
 
 	@Id
-	@GeneratedValue( strategy = IDENTITY)
 	@Column(name = "IdCategorie")
 	private int idCategorie;
 	
 	@Column(name = "nom_categorie")
 	private String nomCategorie;
-	
-	@OneToMany
-	@JoinColumn(name="IdOuvrage")
-	private List<Ouvrage> listeOuvrage = new ArrayList<Ouvrage>();
 
 	public Categorie() {
 		super();

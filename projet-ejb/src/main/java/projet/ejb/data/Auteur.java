@@ -128,8 +128,11 @@ public class Auteur  {
     
 	// equals() et hashcode()
 
-	
 
+	@Override
+	public String toString() {
+		return nom;
+	}
 
 	@Override
 	public int hashCode() {

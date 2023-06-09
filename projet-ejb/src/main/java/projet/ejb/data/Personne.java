@@ -35,6 +35,7 @@ public class Personne  {
 	@JoinColumn(name="idcompte")
 	private Compte compte;
 	
+	// Cela signifie que Personne est propriétaire de la relation et contient la clé étrangère.
 	// Constructeurs
 	
 	public Personne() {
@@ -94,8 +95,7 @@ public class Personne  {
 
 	@Override
 	public String toString() {
-		return "Personne [idPersonne=" + idPersonne + ", nom=" + nom + ", prenom=" + prenom + ", compte=" + compte
-				+ "]";
+		return nom;
 	}
 
 	 

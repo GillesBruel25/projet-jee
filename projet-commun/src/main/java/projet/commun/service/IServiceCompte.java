@@ -21,6 +21,6 @@ public interface IServiceCompte {
 
 	List<DtoCompte>	listerTout() ;
 
-	void miseAJourCompteAvecPersonne(Integer idCompte, DtoPersonne idPersonne);
+	// void miseAJourCompteAvecPersonne(Integer idCompte, DtoPersonne idPersonne);
 
 }

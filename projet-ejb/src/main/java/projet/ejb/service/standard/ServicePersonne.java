@@ -91,5 +91,14 @@ public class ServicePersonne implements IServicePersonne {
 		// TODO Auto-generated method stub
 		return mapper.map(daoPersonne.retrouverParCompte(idCompte));
 	}
+	
+	@Override
+	public List<DtoPersonne> retrouverPersonnesRestantesParCompte(int idCompte) {
+		List<DtoPersonne> liste = new ArrayList<>();
+		for (Personne Personne : daoPersonne.retrouverPersonnesRestantesParCompte(idCompte)) {
+			liste.add(mapper.map(Personne));
+		}
+		return liste;
+	}
 
 }
