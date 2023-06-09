@@ -14,8 +14,10 @@ import projet.commun.dto.DtoCategorie;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceCategorie;
 import projet.ejb.dao.IDaoCategorie;
+import projet.ejb.dao.IDaoOuvrage;
 import projet.ejb.data.Categorie;
 import projet.ejb.data.mapper.IMapperEjb;
+import projet.service.util.UtilServices;
 
 @Stateless
 @Remote
@@ -26,6 +28,8 @@ public class ServiceCategorie implements IServiceCategorie {
 	private IMapperEjb mapper;
 	@Inject
 	private IDaoCategorie daoCategorie;
+	@Inject
+	private IDaoOuvrage daoOuvrage;
 
 	// Actions
 
@@ -44,7 +48,16 @@ public class ServiceCategorie implements IServiceCategorie {
 
 	@Override
 	public void supprimer(int idCategorie) throws ExceptionValidation {
-		daoCategorie.supprimer(idCategorie);
+		try {
+			if(daoOuvrage.compterPourCategorie(idCategorie) != 0) {
+				throw new ExceptionValidation ("La catégorie n'est pas vide");
+			}
+			daoCategorie.supprimer(idCategorie);
+
+		} catch ( Exception e ) {
+			throw UtilServices.exceptionValidationOrAnomaly(e);
+		}
+		
 	}
 
 	@Override

@@ -16,4 +16,6 @@ public interface IDaoOuvrage {
 
 	List<Ouvrage> listerTout();
 
+	int compterPourCategorie(int idCategorie);
+
 }

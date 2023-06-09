@@ -12,7 +12,7 @@ public interface IServiceCategorie {
 
 	void			modifier( DtoCategorie dtoCategorie ) throws ExceptionValidation; 
 
-	void			supprimer( int idCategorie ) throws ExceptionValidation;
+	void			supprimer( int idCategorie) throws ExceptionValidation;
 
 	DtoCategorie 		retrouver( int idCategorie ) ;
 

@@ -61,6 +61,19 @@ public class DaoOuvrage implements IDaoOuvrage {
 		var query = em.createQuery( jpql, Ouvrage.class );
 		return query.getResultList();
 	}
+	
+	
+	@Override
+	@TransactionAttribute( NOT_SUPPORTED )
+	public int compterPourCategorie (int idCategorie) {
+		
+		em.clear();
+		var jpql = "SELECT COUNT(o) FROM Ouvrage o WHERE o.categorie.id=:idCategorie";
+		var query = em.createQuery(jpql, Long.class);
+		query.setParameter("idCategorie", idCategorie);
+		return query.getSingleResult().intValue();
+	
+	}
 
 	
 }
